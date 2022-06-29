@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{movie.name}}{% endblock title %}
+{% block css_files %} <link rel="stylesheet" href="{% static 'forum/movie_details.css' %}">{% endblock css_files %}
+{% block content %}
+    <h1>{{movie.name}}</h1>
+    <img src="{{movie.image}}" alt="">
+    <form action="" method = "POST">
+        {% csrf_token %}
+        {{comment}}
+        <button type="submit"> Submit</button>
+    </form>
+
+    <ul>
+        {% for com in comment_list %}
+            <li>{{com.username}} __ {{com.comment}}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}

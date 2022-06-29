@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block css_files %} <link rel="stylesheet" href="{% static 'forum/index.css' %}">{% endblock css_files %}
+{% block content %}
+    <h1>Get your Thoughts out !!!</h1>
+    <ul>
+        {% for mov in movies %}
+            <li><a href="{% url 'movie-detail' mov.slug %}">{{mov.name}}</a></li>
+        {% endfor %}
+        
+    </ul>
+
+    <form action="https://www.imdb.com/title/tt0169547/" method="POST">
+        {% csrf_token %}
+        <input id="submit" type="button" value="Click" />
+    </form>
+
+{% endblock content %}
+
